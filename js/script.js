@@ -5,20 +5,21 @@ const userInputElement = document.getElementById("user-word");
 const button = document.getElementById("send");
 const resultElement = document.getElementById("result");
 
+//# Flag
+let isPalindrom;
+
+//# Creo la funzione
+function palindromWord(word) {
+  let wordReverse = word.split("").reverse();
+  wordReverse = wordReverse.join("");
+  if (wordReverse === word) isPalindrom = true;
+  else isPalindrom = false;
+}
+
 //# Attendo il click del bottone
 button.addEventListener("click", function () {
   //# Recupero la parola data dall'utente
   const userWord = userInputElement.value.trim().toLowerCase();
-
-  //# Flag
-  let isPalindrom = false;
-
-  //# Creo la funzione
-  function palindromWord(word) {
-    let wordReverse = word.split("").reverse();
-    wordReverse = wordReverse.join("");
-    if (wordReverse === word) isPalindrom = true;
-  }
 
   //# Invoco la funzione
   palindromWord(userWord);
