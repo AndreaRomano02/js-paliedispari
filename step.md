@@ -21,3 +21,38 @@ Creare una funzione per capire se la parola inserita è palindroma.
   Palindroma oppure no.
 
 ---
+
+# TRACCIA Pari o Dispari
+
+L’utente sceglie pari o dispari e inserisce un numero da 1 a 5.
+
+Generiamo un numero random (sempre da 1 a 5) per il computer (usando una funzione).
+
+Sommiamo i due numeri.
+
+Stabiliamo se la somma dei due numeri è pari o dispari (usando una funzione).
+
+Dichiariamo chi ha vinto.
+
+---
+
+## STEPS
+
+- Creo la funzione per il random che ha bisogno di un min e di un max e restituisce un valore numerico.
+  - Faccio la formula e il risultato lo inserisco nel valore da restituire.
+- Chiedo all'utente di scegliere pari o dispari.
+- Chiedo all'utente di dirmi un numero da 1 a 5 compresi.
+- Richiamo la funzione inserendo i miei limiti del random.
+- Sommo il numero uscito randomico e il numero detto dall'utente.
+
+- Creo una funzione che stabilisca se è pari o dispari.
+
+  - Creo una variabile che di default è 'dispari'.
+  - **SE** è pari
+
+    - Sovrascrivo la variabile con 'Pari'.
+
+- Controllo quello che ha scelto l'utente.
+- **SE** E' uguale alla variabile
+  - Ha vinto l'utente
+- **ALTRIMENTI** Ha vinto il pc.
