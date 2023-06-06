@@ -37,10 +37,18 @@ console.log("JS OK");
 
 // -----------------------------------------------------
 //! ODD or EVEN
-//? Funzioni
+//# Recupero gli elemtni dal DOM
+const userNumberElement = document.getElementById("user-number");
+const selectElement = document.getElementById("select-odd-even");
+const resultElemetn = document.getElementById("result-odd-even");
+const pcNumberElement = document.getElementById("cpu-number");
+const play = document.getElementById("play");
+
 //# Costanti
 const min = 1;
 const max = 5;
+
+//? Funzioni
 
 //# Creo la funzione per il random
 function random(min, max) {
@@ -55,36 +63,35 @@ function oddEven(sum) {
   return resultOddEven;
 }
 
-//# Chiedo all'utente di scegliere se è pari o dispari
-const userChoice = prompt("scegli pari o dispari?", "pari")
-  .toLowerCase()
-  .trim();
+play.addEventListener("click", function () {
+  //# Recupero dalla scelta dell'utente se è pari o dispari
+  const userChoice = selectElement.value.toLowerCase();
 
-//# Chiedo all'utente un numero da 1 a 5
-const userNumber = parseInt(prompt("Scegli un numero da 1 a 5 comrpesi", 3));
+  //# Recupero dall'input il valore del numero scelto dall'utente
+  const userNumber = parseInt(userNumberElement.value);
 
-//! VALIDAZIONE
-// ------------
-let isValid = true;
+  //! VALIDAZIONE
+  // ------------
+  let isValid = true;
 
-if (userNumber > max || userNumber < min) isValid = false;
+  if (userNumber > max || userNumber < min) isValid = false;
 
-if (userChoice !== "pari" && userChoice !== "dispari") isValid = false;
+  if (userChoice !== "pari" && userChoice !== "dispari") isValid = false;
 
-if (isValid === false) alert("Campi non corretti");
-else {
-  //# Determino randomicamente il numero dell CPU
-  const pcNumber = random(min, max);
+  if (isValid === false) alert("Campi non corretti");
+  else {
+    //# Determino randomicamente il numero dell CPU e la stampo in pagina
+    const pcNumber = random(min, max);
+    pcNumberElement.innerText = pcNumber;
 
-  console.log(userChoice, userNumber, pcNumber);
+    //# Sommo i due numeri
+    const sum = userNumber + pcNumber;
 
-  //# Sommo i due numeri
-  const sum = userNumber + pcNumber;
+    console.log(sum, oddEven(sum));
 
-  console.log(sum, oddEven(sum));
-
-  //# Determino chi ha vinto controllando la scelta dell'utente con quella determinata dalla funzione
-  if (oddEven(sum) === userChoice) console.log("Hai vinto");
-  else console.log("Hai preso");
-}
+    //# Determino chi ha vinto controllando la scelta dell'utente con quella determinata dalla funzione e la stampo
+    if (oddEven(sum) === userChoice) resultElemetn.innerText = "Hai vinto";
+    else resultElemetn.innerText = "Hai preso";
+  }
+});
 // -----------------------------------------------------
