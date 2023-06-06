@@ -1,23 +1,30 @@
 console.log("JS OK");
 
-//# Chiedo all'utente una parola
-const userWord = prompt(
-  "Scrivimi una parola e ti controllo se è Palindroma"
-).toLowerCase();
+//# Recupero gli elementi dal DOM
+const userInputElement = document.getElementById("user-word");
+const button = document.getElementById("send");
+const resultElement = document.getElementById("result");
 
-//# Flag
-let isPalindrom = false;
+//# Attendo il click del bottone
+button.addEventListener("click", function () {
+  //# Recupero la parola data dall'utente
+  const userWord = userInputElement.value.trim().toLowerCase();
 
-//# Creo la funzione
-function palindromWord(word) {
-  let wordReverse = word.split("").reverse();
-  wordReverse = wordReverse.join("");
-  if (wordReverse === word) isPalindrom = true;
-}
+  //# Flag
+  let isPalindrom = false;
 
-//# Invoco la funzione
-palindromWord(userWord);
+  //# Creo la funzione
+  function palindromWord(word) {
+    let wordReverse = word.split("").reverse();
+    wordReverse = wordReverse.join("");
+    if (wordReverse === word) isPalindrom = true;
+  }
 
-//# Controllo il parametro di isPalindrom e dichiaro se è palindroma o no
-if (isPalindrom) console.log("è palindroma");
-else console.log("Non è palindroma");
+  //# Invoco la funzione
+  palindromWord(userWord);
+
+  //# Controllo il parametro di isPalindrom e dichiaro se è palindroma o no
+  resultElement.innerText = "";
+  if (isPalindrom) resultElement.innerText = "E' palindroma";
+  else resultElement.innerText = "Non è palindroma";
+});
