@@ -13,8 +13,10 @@ let isPalindrom;
 
 //# Creo la funzione
 function palindromWord(word) {
-  let wordReverse = word.split("").reverse();
-  wordReverse = wordReverse.join("");
+  let wordReverse = "";
+  for (let i = word.length - 1; i >= 0; i--) {
+    wordReverse += word[i];
+  }
   if (wordReverse === word) isPalindrom = true;
   else isPalindrom = false;
 }
